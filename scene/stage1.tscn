@@ -7,9 +7,9 @@
 
 [node name="enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 32, 232 )
-group = null
-node_number = null
-speed = null
+group = 1
+node_number = 1
+speed = 0.2
 
 [node name="way1" type="Node2D" parent="."]
 

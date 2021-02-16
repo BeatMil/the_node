@@ -11,6 +11,7 @@ var the_position = Vector2.ZERO
 var node_position = Vector2.ZERO
 
 func _ready():
+	tween_move($"../way1/1")
 	pass # Replace with function body.
 
 
@@ -19,7 +20,6 @@ func _physics_process(_delta):
 		node_number = 1
 	elif node_number == 1:
 		# move to node #1
-		follow_mouse($"../way1/1")
 		pass
 
 
@@ -50,7 +50,7 @@ func tween_move(node):
 	var desination = node.get_position()
 	var tween = get_node("Tween")
 	tween.interpolate_property($".", "position",
-		current_position, desination, 5,
-		Tween.TRANS_BOUNCE, Tween.EASE_OUT_IN)
+		current_position, desination, 2,
+		Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 
