@@ -11,7 +11,9 @@ var the_position = Vector2.ZERO
 var node_position = Vector2.ZERO
 
 func _ready():
-	tween_move($"../way1/1")
+	var first_node = get_node("../way1/1")
+	tween_move(first_node)
+	print("ok")
 	pass # Replace with function body.
 
 
@@ -23,7 +25,7 @@ func _physics_process(_delta):
 		pass
 
 
-# beat function
+# beat function 
 func move_to_node(node, delta):
 	if not is_moving:
 		var current_postion = $".".position
@@ -38,12 +40,6 @@ func move_to_node(node, delta):
 			move_local_y(the_position.y * delta * speed)
 
 
-# Jero function
-func follow_mouse(node):
-	var motionx = (node.position.x - position.x) * speed
-	var motiony = (node.position.y - position.y) * speed
-	translate(Vector2(motionx, motiony))
-
 # the tween fucnction
 func tween_move(node):
 	var current_position = $".".get_position()
@@ -54,3 +50,19 @@ func tween_move(node):
 		Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 
+
+# sinal from the area2D "hibox"- runs function on entering other area2D. we can actually use 
+# a parent node as a way to indicate witch group of waypoints the enemies should follow
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("waypoint"):
+		node_number += 1  
+		var str_node = str(node_number)
+		var new_destination = "../way1/" + str_node
+		var new_node = get_node(new_destination)
+		tween_move(new_node)
+
+	
+	
+	
+	
+	
