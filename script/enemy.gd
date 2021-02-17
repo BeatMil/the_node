@@ -25,7 +25,7 @@ func _physics_process(_delta):
 		pass
 
 
-# beat function 
+# beat function
 func move_to_node(node, delta):
 	if not is_moving:
 		var current_postion = $".".position
@@ -51,18 +51,19 @@ func tween_move(node):
 	tween.start()
 
 
-# sinal from the area2D "hibox"- runs function on entering other area2D. we can actually use 
-# a parent node as a way to indicate witch group of waypoints the enemies should follow
+# signal from the area2D "hibox"- runs function on entering other area2D. we can actually use
+# a parent node as a way to indicate which group of waypoints the enemies should follow
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("waypoint"):
-		node_number += 1  
+		node_number += 1
 		var str_node = str(node_number)
 		var new_destination = "../way1/" + str_node
-		var new_node = get_node(new_destination)
-		tween_move(new_node)
+		if get_node_or_null(new_destination):
+			var new_node = get_node(new_destination)
+			tween_move(new_node)
 
-	
-	
-	
-	
-	
+
+
+
+
+
