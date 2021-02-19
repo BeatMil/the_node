@@ -3,6 +3,7 @@ extends Node2D
 export var group = 1
 export var node_number = 1
 export var speed = 0.2
+export var way = "../way1/"
 
 
 # beat function helper
@@ -11,7 +12,7 @@ var the_position = Vector2.ZERO
 var node_position = Vector2.ZERO
 
 func _ready():
-	var first_node = get_node("../way1/1")
+	var first_node = get_node(way + "1")
 	tween_move(first_node)
 	print("ok")
 	pass # Replace with function body.
@@ -57,7 +58,7 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("waypoint"):
 		node_number += 1
 		var str_node = str(node_number)
-		var new_destination = "../way1/" + str_node
+		var new_destination = way + str_node
 		if get_node_or_null(new_destination):
 			var new_node = get_node(new_destination)
 			tween_move(new_node)

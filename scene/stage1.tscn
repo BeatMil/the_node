@@ -7,6 +7,7 @@
 
 [node name="enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 32, 232 )
+way = "../way2/"
 
 [node name="way1" type="Node2D" parent="."]
 
@@ -33,3 +34,17 @@ position = Vector2( 664, 384 )
 
 [node name="8" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( 664, 232 )
+
+[node name="way2" type="Node2D" parent="."]
+
+[node name="1" parent="way2" instance=ExtResource( 1 )]
+position = Vector2( 328, 464 )
+
+[node name="2" parent="way2" instance=ExtResource( 1 )]
+position = Vector2( 672, 456 )
+
+[node name="3" parent="way2" instance=ExtResource( 1 )]
+position = Vector2( 328, 488 )
+
+[node name="4" parent="way2" instance=ExtResource( 1 )]
+position = Vector2( 672, 480 )
