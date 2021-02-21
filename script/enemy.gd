@@ -4,6 +4,7 @@ export var group = 1
 export var node_number = 1
 export var speed = 0.2
 export var way = "../way1/"
+var damage = 2
 
 
 # beat function helper

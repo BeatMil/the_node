@@ -9,7 +9,9 @@ extents = Vector2( 32, 32 )
 [node name="enemy" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." groups=[
+"enemy",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 scale = Vector2( 0.2, 0.2 )
