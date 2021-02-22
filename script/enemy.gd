@@ -1,7 +1,7 @@
 extends Node2D
 
 export var node_number = 1
-export var speed = 0.2
+export var speed = 3
 export var way = "../way1/"
 export var damage = 2
 export var hp = 3
@@ -51,7 +51,7 @@ func tween_move(node):
 	var desination = node.get_position()
 	var tween = get_node("Tween")
 	tween.interpolate_property($".", "position",
-		current_position, desination, 2,
+		current_position, desination, speed,
 		Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 

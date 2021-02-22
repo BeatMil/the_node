@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://script/health_bar.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.811765, 0.811765, 0.811765, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.192157, 0.192157, 0.192157, 1 )
+
+[node name="health_bar" type="ProgressBar"]
+margin_right = 80.0
+margin_bottom = 16.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 10.0
+step = 1.0
+value = 6.0
+percent_visible = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="." to="." method="_on_health_bar_value_changed"]
