@@ -1,11 +1,12 @@
 extends Node2D
 
-export var group = 1
 export var node_number = 1
 export var speed = 0.2
 export var way = "../way1/"
-var damage = 2
+export var damage = 2
+export var hp = 3
 
+onready var health_bar = $"health_bar"
 
 # beat function helper
 var is_moving = false # making it move linearly helper
@@ -15,8 +16,10 @@ var node_position = Vector2.ZERO
 func _ready():
 	var first_node = get_node(way + "1")
 	tween_move(first_node)
-	print("ok")
-	pass # Replace with function body.
+
+	# set max hp and hp to health_bar
+	health_bar.max_value = hp
+	health_bar.value = hp
 
 
 func _physics_process(_delta):
@@ -65,7 +68,12 @@ func _on_hitbox_area_entered(area):
 			tween_move(new_node)
 
 
-
-
+# always create getter and setter. They are great!
+# these way health_bar can display the health when something changes
+func decrease_hp(amount : int):
+	hp -= amount
+	if hp <= 0:
+		queue_free()
+	health_bar.value = hp
 
 
