@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://media/home.png" type="Texture" id=1]
 [ext_resource path="res://script/home.gd" type="Script" id=2]
 [ext_resource path="res://prefab/health_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://media/stylebox/red_stylebox.tres" type="StyleBox" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -23,4 +24,5 @@ margin_left = -40.0
 margin_top = -40.0
 margin_right = 40.0
 margin_bottom = -24.0
+custom_styles/fg = ExtResource( 4 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
