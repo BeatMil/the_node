@@ -19,6 +19,10 @@ config/name="The Nodes"
 run/main_scene="res://scene/stage1.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/always_on_top=true
+
 [input]
 
 script={
