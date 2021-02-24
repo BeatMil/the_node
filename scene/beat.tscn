@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://prefab/node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/home.tscn" type="PackedScene" id=2]
 [ext_resource path="res://script/beat.gd" type="Script" id=3]
-[ext_resource path="res://prefab/tower/horizontal_tower.tscn" type="PackedScene" id=5]
 
 [node name="beat" type="Node2D"]
 script = ExtResource( 3 )
@@ -25,6 +24,11 @@ wait_time = 0.5
 [node name="spawn_point" type="Position2D" parent="."]
 position = Vector2( -64, 288 )
 
-[node name="horizontal_tower" parent="." instance=ExtResource( 5 )]
-position = Vector2( 576, 192 )
-speed = 0.5
+[node name="console" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 5.8, 3.8 )
+text = "console"
+__meta__ = {
+"_edit_use_anchors_": false
+}

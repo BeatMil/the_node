@@ -3,6 +3,7 @@ extends Node2D
 export var damage = 1
 export var speed = 0.3
 var enemy_in_range = []
+onready var auto_beat = get_node("/root/AutoBeat")
 
 
 func _ready():
@@ -14,7 +15,6 @@ func _ready():
 
 	# set fire-rate of this tower
 	$speed_timer.set_wait_time(speed)
-	print("default_tower.gd")
 
 
 func area_enter_tower(area):
@@ -41,3 +41,13 @@ func timer_timeout():
 	# and decrease its hp
 	if enemy_in_range.front():
 		enemy_in_range.front().get_parent().decrease_hp(1)
+
+
+func _on_Area2D_mouse_entered():
+	# auto_beat.set_is_blocked(true)
+	pass
+
+
+func _on_Area2D_mouse_exited():
+	# auto_beat.set_is_blocked(false)
+	pass
