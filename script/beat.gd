@@ -1,6 +1,6 @@
 extends Node2D
 
-const ENEMY_PRE = preload("res://prefab/enemy.tscn")
+const ENEMY_PRE = preload("res://prefab/enemies/enemy.tscn")
 const SMALL_TOWER_PRE = preload("res://prefab/tower/small_tower.tscn")
 var current_grid_pos = Vector2.ZERO
 onready var auto_beat = get_node("/root/AutoBeat")

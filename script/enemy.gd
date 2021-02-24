@@ -5,7 +5,7 @@ export var speed = 3
 export var way = "../way1/"
 export var damage = 2
 export var hp = 3
-
+export var type = "blue"
 onready var health_bar = $"health_bar"
 
 # beat function helper
@@ -16,7 +16,15 @@ var node_position = Vector2.ZERO
 func _ready():
 	var first_node = get_node(way + "1")
 	tween_move(first_node)
-
+	#godot switch case very cool
+	match type:
+		"red":
+			get_node("icon").modulate = Color(1,0,0)
+		"green":
+			get_node("icon").modulate = Color(0,1,0)
+		"blue":
+			get_node("icon").modulate = Color(0,0,1)
+	
 	# set max hp and hp to health_bar
 	health_bar.max_value = hp
 	health_bar.value = hp
@@ -28,6 +36,7 @@ func _physics_process(_delta):
 	elif node_number == 1:
 		# move to node #1
 		pass
+
 
 
 # beat function
