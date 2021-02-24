@@ -2,7 +2,9 @@ extends Node2D
 
 const ENEMY_PRE = preload("res://prefab/enemy.tscn")
 const SMALL_TOWER_PRE = preload("res://prefab/tower/small_tower.tscn")
+var current_grid_pos = Vector2.ZERO
 onready var auto_beat = get_node("/root/AutoBeat")
+
 
 func _ready():
 	var spawn_timer = $spawn_timer
@@ -11,8 +13,11 @@ func _ready():
 		print("error $spawn_timer.connect() @beat.gd")
 	spawn_timer.start()
 
-func _process(_delta):
-	$console.text = str(auto_beat.is_blocked)
+
+func _process(_delta): # debuging with label
+	pass
+	# $console.text = str(auto_beat.is_blocked)
+
 
 func spawn_enemy():
 	var enemy = ENEMY_PRE.instance()
@@ -22,15 +27,32 @@ func spawn_enemy():
 	enemy.way = "../way1/"
 	self.add_child(enemy)
 
+
 func spawn_small_tower(position):
-	var tower = SMALL_TOWER_PRE.instance()
-	tower.set_position(position)
-	self.add_child(tower)
+	# check if it overlaps other tower before spawning one
+	# by searching for each node in tower group
+	var can_spawn = true
+	var towers = get_tree().get_nodes_in_group("tower")
+	for node in towers:
+		if node.get_global_position() == position:
+			can_spawn = false
+			print("get parried!")
+	var buttons = get_tree().get_nodes_in_group("button")
+	for node in buttons:
+		if node.get_global_position() == position:
+			can_spawn = false
+			print("button parried!")
+
+	if can_spawn:
+		var tower = SMALL_TOWER_PRE.instance()
+		tower.set_position(position)
+		self.add_child(tower)
+
 
 
 func _input(event):
 	# spawn tower at left mouse click via grid
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and auto_beat.spawn_mode:
 		if event.button_index == BUTTON_LEFT and event.pressed and not auto_beat.is_blocked:
 			var mouse_pos = get_viewport().get_mouse_position()
 			var grid_pos_x = (int(mouse_pos.x)/64)*64
