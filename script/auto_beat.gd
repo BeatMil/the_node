@@ -38,4 +38,4 @@ func turn_off_all_mode_except(button_name):
 	var beat = get_tree().get_nodes_in_group("head")
 	var buttons = beat.get_node("buttons").get_children()
 	print(buttons)
-	
+

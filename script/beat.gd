@@ -41,13 +41,7 @@ func _physics_process(delta):
 		# Check if there is a collision at the mouse position
 		if space.intersect_point(mousePos, 1):
 			can_spawn = false
-			# set cursor color red
-			if get_node_or_null("buttons/mouse_grid"):
-				get_node_or_null("buttons/mouse_grid").set_color_red()
 		else:
-			# set cursor color green
-			if get_node_or_null("buttons/mouse_grid"):
-				get_node_or_null("buttons/mouse_grid").set_color_green()
 			can_spawn = true
 
 

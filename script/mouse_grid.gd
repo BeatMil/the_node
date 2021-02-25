@@ -24,10 +24,30 @@ func get_grid_pos():
 
 
 func set_color_green():
-	print("beat_green")
 	$icon.set_modulate(green)
 
 
 func set_color_red():
-	print("beat_red")
 	$icon.set_modulate(red)
+
+
+func _on_Area2D_area_entered(area):
+	# turns red if playaer cannot place a tower
+	if area.is_in_group("tower") or area.is_in_group("restricted_area"):
+		set_color_red()
+
+
+func _on_Area2D_area_exited(area):
+	# turns green if playaer can place a tower
+	if area.is_in_group("tower") or area.is_in_group("restricted_area"):
+		set_color_green()
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("tower") or body.is_in_group("restricted_area"):
+		set_color_red()
+
+
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("tower") or body.is_in_group("restricted_area"):
+		set_color_green()
