@@ -46,19 +46,20 @@ func timer_timeout():
 func _on_Area2D_mouse_entered():
 	auto_beat.set_is_blocked(true)
 	# defend agaisnt when node not found
-	if get_parent().get_node_or_null("mouse_grid"):
-		get_parent().get_node_or_null("mouse_grid").set_color_red()
+	if get_parent().get_node_or_null("buttons/mouse_grid"):
+		get_parent().get_node_or_null("buttons/mouse_grid").set_color_red()
 
 func _on_Area2D_mouse_exited():
 	auto_beat.set_is_blocked(false)
 	# defend agaisnt when node not found
-	if get_parent().get_node_or_null("mouse_grid"):
-		get_parent().get_node_or_null("mouse_grid").set_color_green()
+	if get_parent().get_node_or_null("buttons/mouse_grid"):
+		get_parent().get_node_or_null("buttons/mouse_grid").set_color_green()
 
 
 func _on_hurtbox_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseMotion:
 		auto_beat.set_is_blocked(true)
 		# defend agaisnt when node not found
-		if get_parent().get_node_or_null("mouse_grid"):
-			get_parent().get_node_or_null("mouse_grid").set_color_red()
+		if get_parent().get_node_or_null("buttons/mouse_grid"):
+			print(get_parent().get_node_or_null("buttons/mouse_grid").name)
+			get_parent().get_node_or_null("buttons/mouse_grid").set_color_red()

@@ -39,9 +39,9 @@ __meta__ = {
 }
 
 [node name="money_label" type="Label" parent="."]
-margin_left = 32.0
+margin_left = 208.0
 margin_top = 544.0
-margin_right = 72.0
+margin_right = 248.0
 margin_bottom = 558.0
 rect_scale = Vector2( 3.9, 3.2 )
 text = "$$$"
@@ -58,4 +58,4 @@ position = Vector2( 64, 512 )
 position = Vector2( 128, 512 )
 
 [node name="restricted_area" parent="." instance=ExtResource( 6 )]
-tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0 )
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 524289, 0, 0, 524290, 0, 0 )

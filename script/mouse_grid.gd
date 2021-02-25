@@ -24,8 +24,10 @@ func get_grid_pos():
 
 
 func set_color_green():
+	print("beat_green")
 	$icon.set_modulate(green)
 
 
 func set_color_red():
+	print("beat_red")
 	$icon.set_modulate(red)
