@@ -1,6 +1,6 @@
 extends Node2D
 
-const enemy_pre = preload("res://prefab/enemy.tscn")
+const enemy_pre = preload("res://prefab/enemies/enemy.tscn")
 export var enemy_amount = 3
 var count = 0
 
