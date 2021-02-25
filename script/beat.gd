@@ -15,6 +15,7 @@ func _ready():
 
 
 func _process(_delta): # debuging with label
+	$money_label.text = str(auto_beat.money)
 	pass
 	# $console.text = str(auto_beat.is_blocked)
 
@@ -32,22 +33,27 @@ func spawn_small_tower(position):
 	# check if it overlaps other tower before spawning one
 	# by searching for each node in tower group
 	var can_spawn = true
+	var is_enough_money = false
 	var towers = get_tree().get_nodes_in_group("tower")
 	for node in towers:
 		if node.get_global_position() == position:
 			can_spawn = false
-			print("get parried!")
 	var buttons = get_tree().get_nodes_in_group("button")
 	for node in buttons:
 		if node.get_global_position() == position:
 			can_spawn = false
-			print("button parried!")
+	# checks money
+	if auto_beat.money - auto_beat.small_tower_price < 0:
+		print("not enough money")
+	else:
+		is_enough_money = true
 
-	if can_spawn:
+
+	if can_spawn and is_enough_money:
+		auto_beat.buy_small_tower()
 		var tower = SMALL_TOWER_PRE.instance()
 		tower.set_position(position)
 		self.add_child(tower)
-
 
 
 func _input(event):
