@@ -37,19 +37,27 @@ func area_exit_tower(area):
 
 
 func timer_timeout():
-	# check if area is still there
+	# check if enemy(area) is still there
 	# and decrease its hp
 	if enemy_in_range.front():
 		enemy_in_range.front().get_parent().decrease_hp(1)
 
 
 func _on_Area2D_mouse_entered():
-	auto_beat.set_is_blocked(true)
+	auto_beat.set_is_blocked(true) # block spawning
+
 
 func _on_Area2D_mouse_exited():
-	auto_beat.set_is_blocked(false)
+	auto_beat.set_is_blocked(false) # unblock spawning
 
 
 func _on_hurtbox_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseMotion:
 		auto_beat.set_is_blocked(true)
+
+	if auto_beat.delete_mode: # check detele mode
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT and event.pressed:
+				# check for left click
+				# then 
+				queue_free()

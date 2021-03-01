@@ -9,8 +9,11 @@ func _ready():
 
 
 func _on_Button_toggled(button_pressed):
+	# turn off all modes
+	# then set delete mode on
 	if button_pressed:
+		auto_beat.toggle_off_button_except("delete_tower")
+		auto_beat.turn_off_all_mode()
 		auto_beat.set_delete_mode(true)
-		auto_beat.turn_off_all_mode_except(self.name)
 	else:
 		auto_beat.set_delete_mode(false)

@@ -14,9 +14,15 @@ func delete_mouse():
 
 
 func _on_Button_toggled(button_pressed):
+	# turn off all modes
+	# then set spawn mode on
 	if button_pressed:
+		auto_beat.toggle_off_button_except("spawn_tower")
+		auto_beat.turn_off_all_mode()
 		auto_beat.set_spawn_mode(true)
-		spawn_mouse()
+		auto_beat.set_is_blocked(false)
+		spawn_mouse() # the cursor; red if cant spawn in the tile
+		# green if can spawn in the tile
 	else:
 		auto_beat.set_spawn_mode(false)
 		delete_mouse()
