@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://script/bomb_button.gd" type="Script" id=1]
+
+[node name="bomb_button" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 64.0
+margin_bottom = 24.0
+toggle_mode = true
+text = "bomb"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]

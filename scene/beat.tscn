@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://prefab/node.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/home.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://prefab/button/delete_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefab/button/spawn_button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://prefab/tilemaps/restricted_area.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefab/button/bomb_button.tscn" type="PackedScene" id=7]
 
 [node name="beat" type="Node2D" groups=[
 "head",
@@ -56,6 +57,9 @@ position = Vector2( 64, 512 )
 
 [node name="delete_tower" parent="buttons" instance=ExtResource( 4 )]
 position = Vector2( 128, 512 )
+
+[node name="bomb_button" parent="buttons" instance=ExtResource( 7 )]
+position = Vector2( 192, 512 )
 
 [node name="restricted_area" parent="." instance=ExtResource( 6 )]
 tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 524289, 0, 0, 524290, 0, 0 )
