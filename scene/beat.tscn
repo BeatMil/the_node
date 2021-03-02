@@ -50,6 +50,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="restricted_area" parent="." instance=ExtResource( 6 )]
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0 )
+
 [node name="buttons" type="Node2D" parent="."]
 
 [node name="spawn_tower" parent="buttons" instance=ExtResource( 5 )]
@@ -58,8 +61,7 @@ position = Vector2( 64, 512 )
 [node name="delete_tower" parent="buttons" instance=ExtResource( 4 )]
 position = Vector2( 128, 512 )
 
-[node name="bomb_button" parent="buttons" instance=ExtResource( 7 )]
+[node name="bomb_button" parent="buttons" groups=[
+"button",
+] instance=ExtResource( 7 )]
 position = Vector2( 192, 512 )
-
-[node name="restricted_area" parent="." instance=ExtResource( 6 )]
-tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 524289, 0, 0, 524290, 0, 0 )

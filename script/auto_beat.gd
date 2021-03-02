@@ -3,6 +3,7 @@ extends Node
 # modes
 var spawn_mode = false
 var delete_mode = false
+var bomb_mode = false
 
 
 # helpers
@@ -32,6 +33,11 @@ func set_delete_mode(boolean):
 	print("delete_mode: %s"%boolean)
 
 
+func set_bomb_mode(boolean):
+	bomb_mode = boolean
+	print("bomb_mode: %s"%boolean)
+
+
 func buy_small_tower():
 	money -= small_tower_price
 
@@ -39,7 +45,7 @@ func buy_small_tower():
 func turn_off_all_mode():
 	spawn_mode = false
 	delete_mode = false
-
+	bomb_mode = false
 
 # toggle off all buttons in button node
 # so that play can go from spawn mode to delete mode with out having to

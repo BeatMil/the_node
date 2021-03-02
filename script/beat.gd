@@ -2,7 +2,8 @@ extends Node2D
 
 const ENEMY_PRE = preload("res://prefab/enemies/enemy.tscn")
 const SMALL_TOWER_PRE = preload("res://prefab/tower/small_tower.tscn")
-var current_grid_pos = Vector2.ZERO
+const BOMB_PRE = preload("res://prefab/special/bomb.tscn")
+# var current_grid_pos = Vector2.ZERO  # unuse variable?
 var can_spawn = true
 onready var auto_beat = get_node("/root/AutoBeat")
 
@@ -20,14 +21,6 @@ func _process(_delta): # debuging with label
 	$console.text = str(auto_beat.is_blocked)
 
 
-func spawn_enemy():
-	var enemy = ENEMY_PRE.instance()
-	enemy.set_position($spawn_point.get_position())
-	enemy.damage = 1
-	enemy.speed = 5
-	enemy.way = "../way1/"
-	self.add_child(enemy)
-
 #copy and paste boi. this code just checks if the mouse is colliding with anything
 #useiing to check if it's colliding with a tile that has a collision. We's use this
 #as a way to create a restricted area where players can't build.
@@ -43,6 +36,21 @@ func _physics_process(delta):
 			can_spawn = false
 		else:
 			can_spawn = true
+
+
+
+func spawn_bomb():
+	var bomb = BOMB_PRE.instance()
+	bomb.set_position(get_viewport().get_mouse_position())
+	self.add_child(bomb)
+
+func spawn_enemy():
+	var enemy = ENEMY_PRE.instance()
+	enemy.set_position($spawn_point.get_position())
+	enemy.damage = 1
+	enemy.speed = 5
+	enemy.way = "../way1/"
+	self.add_child(enemy)
 
 
 func spawn_small_tower(position):
@@ -91,3 +99,7 @@ func _input(event):
 			var grid_pos = Vector2(grid_pos_x,grid_pos_y)
 			spawn_small_tower(grid_pos)
 
+	# check bomb_mode
+	if event is InputEventMouseButton and auto_beat.bomb_mode:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			spawn_bomb()
