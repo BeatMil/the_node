@@ -19,6 +19,18 @@ script = ExtResource( 3 )
 position = Vector2( -64, 288 )
 
 [node name="2" parent="way1" instance=ExtResource( 1 )]
+position = Vector2( 320, 288 )
+
+[node name="3" parent="way1" instance=ExtResource( 1 )]
+position = Vector2( 320, 448 )
+
+[node name="4" parent="way1" instance=ExtResource( 1 )]
+position = Vector2( 576, 448 )
+
+[node name="5" parent="way1" instance=ExtResource( 1 )]
+position = Vector2( 576, 288 )
+
+[node name="6" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( 1024, 288 )
 
 [node name="home" parent="." instance=ExtResource( 2 )]
@@ -29,6 +41,15 @@ wait_time = 0.5
 
 [node name="spawn_point" type="Position2D" parent="."]
 position = Vector2( -64, 288 )
+
+[node name="can_spawn" type="Label" parent="."]
+margin_top = 56.0
+margin_right = 40.0
+margin_bottom = 70.0
+text = "can_spawn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="console" type="Label" parent="."]
 margin_right = 40.0

@@ -19,6 +19,7 @@ func _ready():
 func _process(_delta): # debuging with label
 	$money_label.text = str(auto_beat.money)
 	$console.text = str(auto_beat.is_blocked)
+	$can_spawn.text = str(can_spawn)
 
 
 #copy and paste boi. this code just checks if the mouse is colliding with anything
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	# Get the mouse's position
 	var mousePos = get_global_mouse_position()
 	# check spawn_mode
-	if auto_beat.spawn_mode:
+	if auto_beat.spawn_mode or auto_beat.bomb_mode:
 		# Check if there is a collision at the mouse position
 		if space.intersect_point(mousePos, 1):
 			can_spawn = false
@@ -101,5 +102,5 @@ func _input(event):
 
 	# check bomb_mode
 	if event is InputEventMouseButton and auto_beat.bomb_mode:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == BUTTON_LEFT and event.pressed and can_spawn:
 			spawn_bomb()

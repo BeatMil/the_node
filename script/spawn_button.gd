@@ -6,6 +6,12 @@ const MOUSE_PRE = preload("res://prefab/mouse_grid.tscn")
 
 func spawn_mouse():
 	var mouse = MOUSE_PRE.instance()
+	# spawn mouse cursor on to the grid that real mouse is in.
+	var mouse_pos = get_viewport().get_mouse_position()
+	var grid_pos_x = (int(mouse_pos.x)/64)*64
+	var grid_pos_y = (int(mouse_pos.y)/64)*64
+	var grid_pos = Vector2(grid_pos_x,grid_pos_y)
+	mouse.set_position(grid_pos)
 	get_parent().add_child(mouse)
 
 
