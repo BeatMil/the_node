@@ -22,7 +22,7 @@ position = Vector2( -64, 288 )
 position = Vector2( 320, 288 )
 
 [node name="3" parent="way1" instance=ExtResource( 1 )]
-position = Vector2( 320, 448 )
+position = Vector2( 312, 456 )
 
 [node name="4" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( 576, 448 )
@@ -37,7 +37,6 @@ position = Vector2( 1024, 288 )
 position = Vector2( 960, 288 )
 
 [node name="spawn_timer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="spawn_point" type="Position2D" parent="."]
 position = Vector2( -64, 288 )
