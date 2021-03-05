@@ -17,6 +17,7 @@ var money = 1000 # money! buy towers!
 # towers price
 # NOTE: I dont know where to put the price so it's here for now.
 var small_tower_price = 200
+var bomb_price = 500
 
 
 func set_is_blocked(boolean):
@@ -39,7 +40,23 @@ func set_bomb_mode(boolean):
 
 
 func buy_small_tower():
-	money -= small_tower_price
+	# checks money
+	if money - small_tower_price < 0:
+		print("not enough money")
+		return false
+	else:
+		money -= small_tower_price
+		return true
+
+
+func buy_bomb():
+	# checks money
+	if money - bomb_price < 0:
+		print("not enough money")
+		return false
+	else:
+		money -= bomb_price
+		return true
 
 
 func turn_off_all_mode():

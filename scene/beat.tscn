@@ -13,22 +13,25 @@
 ]]
 script = ExtResource( 3 )
 
+[node name="restricted_area" parent="." instance=ExtResource( 6 )]
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327685, 0, 0, 327690, 0, 0, 393221, 0, 0, 393226, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0 )
+
 [node name="way1" type="Node2D" parent="."]
 
 [node name="1" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( -64, 288 )
 
 [node name="2" parent="way1" instance=ExtResource( 1 )]
-position = Vector2( 320, 288 )
+position = Vector2( 384, 288 )
 
 [node name="3" parent="way1" instance=ExtResource( 1 )]
-position = Vector2( 312, 456 )
+position = Vector2( 352, 512 )
 
 [node name="4" parent="way1" instance=ExtResource( 1 )]
-position = Vector2( 576, 448 )
+position = Vector2( 704, 480 )
 
 [node name="5" parent="way1" instance=ExtResource( 1 )]
-position = Vector2( 576, 288 )
+position = Vector2( 672, 256 )
 
 [node name="6" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( 1024, 288 )
@@ -37,6 +40,10 @@ position = Vector2( 1024, 288 )
 position = Vector2( 960, 288 )
 
 [node name="spawn_timer" type="Timer" parent="."]
+wait_time = 2.0
+__meta__ = {
+"_editor_description_": "interval enemy spawning"
+}
 
 [node name="spawn_point" type="Position2D" parent="."]
 position = Vector2( -64, 288 )
@@ -60,18 +67,15 @@ __meta__ = {
 }
 
 [node name="money_label" type="Label" parent="."]
-margin_left = 208.0
-margin_top = 544.0
-margin_right = 248.0
-margin_bottom = 558.0
+margin_left = 72.0
+margin_top = 464.0
+margin_right = 112.0
+margin_bottom = 478.0
 rect_scale = Vector2( 3.9, 3.2 )
 text = "$$$"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="restricted_area" parent="." instance=ExtResource( 6 )]
-tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0 )
 
 [node name="buttons" type="Node2D" parent="."]
 

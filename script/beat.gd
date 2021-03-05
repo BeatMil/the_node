@@ -10,7 +10,6 @@ onready var auto_beat = get_node("/root/AutoBeat")
 
 func _ready():
 	var spawn_timer = $spawn_timer
-	spawn_timer.set_wait_time(1)
 	if spawn_timer.connect("timeout",self,"spawn_enemy") != OK:
 		print("error $spawn_timer.connect() @beat.gd")
 	spawn_timer.start()
@@ -41,9 +40,10 @@ func _physics_process(delta):
 
 
 func spawn_bomb():
-	var bomb = BOMB_PRE.instance()
-	bomb.set_position(get_viewport().get_mouse_position())
-	self.add_child(bomb)
+	if auto_beat.buy_bomb(): # decrease money
+		var bomb = BOMB_PRE.instance()
+		bomb.set_position(get_viewport().get_mouse_position())
+		self.add_child(bomb)
 
 func spawn_enemy():
 	var enemy = ENEMY_PRE.instance()
@@ -55,13 +55,6 @@ func spawn_enemy():
 
 
 func spawn_small_tower(position):
-	#moved the can_spawn out of this function so i can use it in another
-	var is_enough_money = false
-
-	#code below is redundant?
-	# beat: dont mess with my code!
-	# beat: they are there for a reason!
-
 	# check if it overlaps other tower before spawning one
 	# by searching for each node in tower group
 	# and also the button group!
@@ -76,18 +69,15 @@ func spawn_small_tower(position):
 	# 	if node.get_global_position() == position:
 	# 		can_spawn = false
 
-	# checks money
-	if auto_beat.money - auto_beat.small_tower_price < 0:
-		print("not enough money")
-	else:
-		is_enough_money = true
 
 
-	if can_spawn and is_enough_money:
-		auto_beat.buy_small_tower()
-		var tower = SMALL_TOWER_PRE.instance()
-		tower.set_position(position)
-		self.add_child(tower)
+	if can_spawn:
+		# auto_beat.buy_small_tower() is now return boolean
+		# it checks money before return boolean
+		if auto_beat.buy_small_tower():
+			var tower = SMALL_TOWER_PRE.instance()
+			tower.set_position(position)
+			self.add_child(tower)
 
 
 func _input(event):
