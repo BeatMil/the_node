@@ -24,7 +24,7 @@ func _ready():
 			get_node("icon").modulate = Color(0,1,0)
 		"blue":
 			get_node("icon").modulate = Color(0,0,1)
-	
+
 	# set max hp and hp to health_bar
 	health_bar.max_value = hp
 	health_bar.value = hp
@@ -36,22 +36,6 @@ func _physics_process(_delta):
 	elif node_number == 1:
 		# move to node #1
 		pass
-
-
-
-# beat function
-func move_to_node(node, delta):
-	if not is_moving:
-		var current_postion = $".".position
-		node_position = node.position
-		the_position = node_position - current_postion
-		is_moving = true
-	elif is_moving:
-		print(the_position)
-		# keep moving until the destination
-		if $".".get_position() <= node_position:
-			move_local_x(the_position.x * delta * speed)
-			move_local_y(the_position.y * delta * speed)
 
 
 # the tween fucnction

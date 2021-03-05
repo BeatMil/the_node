@@ -17,6 +17,10 @@ script = ExtResource( 3 )
 tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327685, 0, 0, 327690, 0, 0, 393221, 0, 0, 393226, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0 )
 
 [node name="way1" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="1" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( -64, 288 )
@@ -36,11 +40,15 @@ position = Vector2( 672, 256 )
 [node name="6" parent="way1" instance=ExtResource( 1 )]
 position = Vector2( 1024, 288 )
 
+[node name="way2" type="Node2D" parent="."]
+
+[node name="1" parent="way2" instance=ExtResource( 1 )]
+position = Vector2( 1024, 288 )
+
 [node name="home" parent="." instance=ExtResource( 2 )]
 position = Vector2( 960, 288 )
 
 [node name="spawn_timer" type="Timer" parent="."]
-wait_time = 2.0
 __meta__ = {
 "_editor_description_": "interval enemy spawning"
 }

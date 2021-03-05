@@ -6,12 +6,24 @@ const BOMB_PRE = preload("res://prefab/special/bomb.tscn")
 # var current_grid_pos = Vector2.ZERO  # unuse variable?
 var can_spawn = true
 onready var auto_beat = get_node("/root/AutoBeat")
+onready  var spawn_timer = $spawn_timer
+
+# order that enemy will spawn and the delay before spawn
+# two dimension should be better
+var enemy_count = 0
+var enemy_army = [
+		["boss",6],
+		["boss",6],
+]
 
 
 func _ready():
-	var spawn_timer = $spawn_timer
+	# connect timeout signal to spawn_enemy()
 	if spawn_timer.connect("timeout",self,"spawn_enemy") != OK:
-		print("error $spawn_timer.connect() @beat.gd")
+		print("error spawn_timer.connect() @beat.gd")
+	# set wait time equal to the first delay and also the second one??...
+	# this one is confusing.. I'm trying my best okay??
+	spawn_timer.set_wait_time(enemy_army[enemy_count][1])
 	spawn_timer.start()
 
 
@@ -45,13 +57,33 @@ func spawn_bomb():
 		bomb.set_position(get_viewport().get_mouse_position())
 		self.add_child(bomb)
 
+# This function is connected with spawn_timer
+# enemy will spawn according to the enemy_army[]
+# a boss enemy is an enemy but with higher hp and damage
 func spawn_enemy():
 	var enemy = ENEMY_PRE.instance()
 	enemy.set_position($spawn_point.get_position())
-	enemy.damage = 1
-	enemy.speed = 5
-	enemy.way = "../way1/"
-	self.add_child(enemy)
+	enemy.set_z_index(10)
+	if enemy_count < enemy_army.size():
+		match enemy_army[enemy_count][0]:
+			"normal":
+				# normal enemy
+				enemy.way = "../way1/"
+				enemy.damage = 1
+				enemy.speed = 5
+			"boss":
+				# boss enemy
+				enemy.way = "../way2/"
+				enemy.type = "red"
+				enemy.damage = 9
+				enemy.speed = 16
+				enemy.hp = 50
+	if enemy_count < enemy_army.size():
+		spawn_timer.set_wait_time(enemy_army[enemy_count][1])
+		self.add_child(enemy)
+	else:
+		spawn_timer.stop()
+	enemy_count += 1
 
 
 func spawn_small_tower(position):
