@@ -7,6 +7,7 @@ export var damage = 2
 export var hp = 3
 export var type = "blue"
 onready var health_bar = $"health_bar"
+onready var auto_beat = get_node("/root/AutoBeat")
 
 # beat function helper
 var is_moving = false # making it move linearly helper
@@ -65,7 +66,16 @@ func _on_hitbox_area_entered(area):
 # these way health_bar can display the health when something changes
 func decrease_hp(amount : int):
 	hp -= amount
+	# if there is normal in the name or boss in the name
+	# then get money for it
+	# this is used with beat.gd spawn_enemy()
 	if hp <= 0:
+		if $".".name.find("normal") > -1:
+			auto_beat.add_money(200)
+			print("normal money")
+		elif $".".name.find("boss") > -1:
+			auto_beat.add_money(1000)
+			print("boss money")
 		queue_free()
 	health_bar.value = hp
 

@@ -29,8 +29,6 @@ func _on_Button_toggled(button_pressed):
 		auto_beat.turn_off_all_mode()
 		auto_beat.set_bomb_mode(true)
 		spawn_mouse()
-		print("bomb mode on")
 	else:
 		auto_beat.set_bomb_mode(false)
 		delete_mouse()
-		print("bomb mode off")

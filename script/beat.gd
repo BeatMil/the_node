@@ -12,8 +12,12 @@ onready  var spawn_timer = $spawn_timer
 # two dimension should be better
 var enemy_count = 0
 var enemy_army = [
-		["boss",6],
-		["boss",6],
+		["normal",1],
+		["normal",1],
+		["normal",1],
+		["boss",1],
+		["boss",1],
+		["boss",1],
 ]
 
 
@@ -50,12 +54,12 @@ func _physics_process(delta):
 			can_spawn = true
 
 
-
 func spawn_bomb():
 	if auto_beat.buy_bomb(): # decrease money
 		var bomb = BOMB_PRE.instance()
 		bomb.set_position(get_viewport().get_mouse_position())
 		self.add_child(bomb)
+
 
 # This function is connected with spawn_timer
 # enemy will spawn according to the enemy_army[]
@@ -68,18 +72,34 @@ func spawn_enemy():
 		match enemy_army[enemy_count][0]:
 			"normal":
 				# normal enemy
+				enemy.name = "normal"
 				enemy.way = "../way1/"
 				enemy.damage = 1
 				enemy.speed = 5
 			"boss":
 				# boss enemy
+				enemy.name = "boss"
 				enemy.way = "../way2/"
 				enemy.type = "red"
 				enemy.damage = 9
 				enemy.speed = 16
-				enemy.hp = 50
+				enemy.hp = 20
+			_: # underscore meant default
+				pass
+
 	if enemy_count < enemy_army.size():
-		spawn_timer.set_wait_time(enemy_army[enemy_count][1])
+		# set the delay
+		# timer needs to be set before using it
+		# therefore to make it use it's own delay
+		# it must be set before
+		# this is hard to explain...(」°ロ°)」
+		if enemy_count+1 == enemy_army.size():
+			pass
+		else:
+			# set_wait_time just doesn't work if timer is not stopped
+			spawn_timer.stop()
+			spawn_timer.set_wait_time(enemy_army[enemy_count+1][1])
+			spawn_timer.start()
 		self.add_child(enemy)
 	else:
 		spawn_timer.stop()
