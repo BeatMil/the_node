@@ -11,7 +11,7 @@ var is_blocked = false # can't spawn tower if another tower is already there
 
 
 # money and stuff
-var money = 1000 # money! buy towers!
+var money = 20000 # money! buy towers!
 
 
 # towers price
@@ -74,3 +74,6 @@ func toggle_off_button_except(button_name):
 		if button.is_in_group("button"):
 			if button.name != button_name:
 				button.get_node("Button").set_pressed(false)
+
+func add_money(amount):
+	money += amount
