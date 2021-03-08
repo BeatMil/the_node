@@ -12,12 +12,12 @@ onready  var spawn_timer = $spawn_timer
 # two dimension should be better
 var enemy_count = 0
 var enemy_army = [
-		["normal",1],
-		["normal",1],
-		["normal",1],
-		["boss",1],
-		["boss",1],
-		["boss",1],
+		["normal",3],
+		["normal",3],
+		["normal",3],
+		["boss",6],
+		["boss",4],
+		["boss",4],
 ]
 
 
@@ -76,13 +76,14 @@ func spawn_enemy():
 				enemy.way = "../way1/"
 				enemy.damage = 1
 				enemy.speed = 5
+				enemy.connect_stage_clear()
 			"boss":
 				# boss enemy
 				enemy.name = "boss"
 				enemy.way = "../way2/"
 				enemy.type = "red"
 				enemy.damage = 9
-				enemy.speed = 16
+				enemy.speed = 20
 				enemy.hp = 20
 			_: # underscore meant default
 				pass
@@ -146,3 +147,7 @@ func _input(event):
 	if event is InputEventMouseButton and auto_beat.bomb_mode:
 		if event.button_index == BUTTON_LEFT and event.pressed and can_spawn:
 			spawn_bomb()
+
+
+func stage_clear():
+	print("stage clear!")

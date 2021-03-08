@@ -11,7 +11,7 @@ var is_blocked = false # can't spawn tower if another tower is already there
 
 
 # money and stuff
-var money = 20000 # money! buy towers!
+var money = 200 # money! buy towers!
 
 
 # towers price

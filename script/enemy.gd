@@ -9,6 +9,10 @@ export var type = "blue"
 onready var health_bar = $"health_bar"
 onready var auto_beat = get_node("/root/AutoBeat")
 
+# signal emitted when this enemy queue freed
+signal stage_clear
+var stage_clear = false
+
 # beat function helper
 var is_moving = false # making it move linearly helper
 var the_position = Vector2.ZERO
@@ -76,7 +80,13 @@ func decrease_hp(amount : int):
 		elif $".".name.find("boss") > -1:
 			auto_beat.add_money(1000)
 			print("boss money")
+		if stage_clear:
+			print("enemy die clear")
+			queue_free()
 		queue_free()
 	health_bar.value = hp
 
 
+func connect_stage_clear():
+	print(connect("stage_clear",get_parent(),"stage_clear"),"connect_stage_clear")
+	stage_clear = true
