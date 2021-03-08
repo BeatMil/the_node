@@ -10,7 +10,7 @@ onready var health_bar = $"health_bar"
 onready var auto_beat = get_node("/root/AutoBeat")
 
 # signal emitted when this enemy queue freed
-signal stage_clear
+signal signal_clear
 var stage_clear = false
 
 # beat function helper
@@ -34,6 +34,10 @@ func _ready():
 	health_bar.max_value = hp
 	health_bar.value = hp
 
+	# when this node get queue_freed it will emit signal
+	# said that player cleared the stage!
+	if stage_clear:
+		print(connect("signal_clear",get_parent(),"beat_clear"),"connect_stage_clear")
 
 func _physics_process(_delta):
 	if node_number <= 0:
@@ -81,12 +85,7 @@ func decrease_hp(amount : int):
 			auto_beat.add_money(1000)
 			print("boss money")
 		if stage_clear:
-			print("enemy die clear")
+			emit_signal("signal_clear")
 			queue_free()
 		queue_free()
 	health_bar.value = hp
-
-
-func connect_stage_clear():
-	print(connect("stage_clear",get_parent(),"stage_clear"),"connect_stage_clear")
-	stage_clear = true
