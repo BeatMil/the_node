@@ -2,4 +2,5 @@ test.tscn
 test.gd
 node_test.gd
 shock_tower_test.gd
+test/
 
