@@ -1,6 +1,6 @@
 extends Node2D
 
-var damage = 25
+var damage = 10
 
 # timer auto start and one shot
 # this bomb node will be spawned by the bomb button

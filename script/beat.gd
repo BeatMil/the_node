@@ -12,12 +12,13 @@ onready  var spawn_timer = $spawn_timer
 # two dimension should be better
 var enemy_count = 0
 var enemy_army = [
-		["last",3],
+		["normal",3],
+		["normal",3],
 		["normal",3],
 		["normal",3],
 		["boss",6],
 		["boss",4],
-		["boss",4],
+		["last",7],
 ]
 
 
@@ -157,4 +158,19 @@ func _input(event):
 
 
 func beat_clear():
-	print("stage clear! func")
+	# check if there are enemies left
+	# it count itself before queuefree so I have to put array.size to 1
+	if get_all_enemy().size() <= 1:
+		print("no enemy left clear!")
+	else:
+		print("there is enemy! not clear!")
+
+
+
+func get_all_enemy():
+	var enemies = []
+	var nodes = get_children()
+	for node in nodes:
+		if node.is_in_group("enemy"):
+			enemies.append(node)
+	return enemies
