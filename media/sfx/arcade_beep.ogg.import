@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/arcade_beep.ogg-1f9d2dc3e36536e0cdb330047dddb8f6.oggstr"
+
+[deps]
+
+source_file="res://media/sfx/arcade_beep.ogg"
+dest_files=[ "res://.import/arcade_beep.ogg-1f9d2dc3e36536e0cdb330047dddb8f6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
