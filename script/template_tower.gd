@@ -4,6 +4,7 @@ export var damage = 1
 export var speed = 0.3
 var enemy_in_range = []
 onready var auto_beat = get_node("/root/AutoBeat")
+onready var audio = $AudioStreamPlayer
 
 
 func _ready():
@@ -41,6 +42,7 @@ func timer_timeout():
 	# and decrease its hp
 	if enemy_in_range.front():
 		enemy_in_range.front().get_parent().decrease_hp(1)
+		audio.play()
 
 
 func _on_Area2D_mouse_entered():
@@ -59,5 +61,5 @@ func _on_hurtbox_input_event(viewport, event, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and event.pressed:
 				# check for left click
-				# then 
+				# then
 				queue_free()

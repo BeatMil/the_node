@@ -9,6 +9,7 @@ export var type = "blue"
 onready var health_bar = $"health_bar"
 onready var auto_beat = get_node("/root/AutoBeat")
 
+
 # signal emitted when this enemy queue freed
 signal signal_clear
 var stage_clear = false
