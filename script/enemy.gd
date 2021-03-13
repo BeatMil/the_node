@@ -5,7 +5,7 @@ export var speed = 3
 export var way = "../way1/"
 export var damage = 2
 export var hp = 3
-export var type = "blue"
+export var type = "none"
 onready var health_bar = $"health_bar"
 onready var auto_beat = get_node("/root/AutoBeat")
 
@@ -30,6 +30,8 @@ func _ready():
 			get_node("icon").modulate = Color(0,1,0)
 		"blue":
 			get_node("icon").modulate = Color(0,0,1)
+		"none":
+			get_node("icon").modulate = Color(1,1,1)
 
 	# set max hp and hp to health_bar
 	health_bar.max_value = hp
