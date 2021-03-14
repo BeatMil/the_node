@@ -12,15 +12,7 @@ onready  var spawn_timer = $spawn_timer
 # order that enemy will spawn and the delay before spawn
 # two dimension should be better
 var enemy_count = 0
-var enemy_army = [
-		["normal",3],
-		["normal",3],
-		["normal",3],
-		["normal",3],
-		["boss",6],
-		["boss",4],
-		["last",7],
-]
+var enemy_army = []
 
 
 func _ready():
@@ -29,6 +21,12 @@ func _ready():
 		print("error spawn_timer.connect() @beat.gd")
 	# set wait time equal to the first delay and also the second one??...
 	# this one is confusing.. I'm trying my best okay??
+	match self.name: # check root name (stage name)
+		"beat":
+			enemy_army = auto_beat.enemy_army1
+		"stage2":
+			enemy_army = auto_beat.enemy_army2
+
 	spawn_timer.set_wait_time(enemy_army[enemy_count][1])
 	spawn_timer.start()
 
@@ -80,6 +78,20 @@ func spawn_enemy():
 				enemy.way = "../way2/"
 				enemy.damage = 1
 				enemy.speed = 10
+			"normal2":
+				# normal enemy
+				enemy.name = "normal"
+				enemy.way = "../way2/"
+				enemy.damage = 1
+				enemy.speed = 13
+			"speedy":
+				# speedy enemy
+				enemy.name = "speedy"
+				enemy.way = "../way2/"
+				enemy.damage = 4
+				enemy.speed = 4
+				enemy.type = "green"
+				enemy.hp = 5
 			"boss":
 				# boss enemy
 				enemy.name = "boss"
@@ -189,3 +201,7 @@ func get_all_enemy():
 		if node.is_in_group("enemy"):
 			enemies.append(node)
 	return enemies
+
+
+func _on_home_game_over():
+	$game_over.set_visible(true)

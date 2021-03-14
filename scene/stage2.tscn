@@ -10,7 +10,7 @@
 [ext_resource path="res://prefab/stage_clear.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefab/game_over.tscn" type="PackedScene" id=9]
 
-[node name="beat" type="Node2D" groups=[
+[node name="stage2" type="Node2D" groups=[
 "head",
 ]]
 script = ExtResource( 3 )
@@ -88,25 +88,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="stage_clear" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 368, 176 )
+
+[node name="game_over" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 376, 152 )
+
 [node name="buttons" type="Node2D" parent="."]
 
 [node name="spawn_tower" parent="buttons" instance=ExtResource( 5 )]
 position = Vector2( 64, 512 )
 
 [node name="delete_tower" parent="buttons" instance=ExtResource( 4 )]
-position = Vector2( 192, 512 )
+position = Vector2( 128, 512 )
 
 [node name="bomb_button" parent="buttons" groups=[
 "button",
 ] instance=ExtResource( 7 )]
-position = Vector2( 128, 512 )
-
-[node name="stage_clear" parent="." instance=ExtResource( 8 )]
-visible = false
-position = Vector2( 376, 240 )
-z_index = 11
-
-[node name="game_over" parent="." instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 360, 192 )
+position = Vector2( 192, 512 )
 [connection signal="game_over" from="home" to="." method="_on_home_game_over"]

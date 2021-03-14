@@ -1,4 +1,25 @@
 extends Node
+# stages
+var enemy_army1 = [
+		["normal",3],
+		["normal",3],
+		["normal",3],
+		["normal",3],
+		["boss",6],
+		["boss",4],
+		["last",7],
+]
+
+var enemy_army2 = [
+		["normal2",3],
+		["normal2",2],
+		["normal2",2],
+		["speedy",5],
+		["speedy",0.2],
+		["speedy",0.2],
+		["boss",4],
+		["last",7],
+]
 
 # modes
 var spawn_mode = false
@@ -17,7 +38,7 @@ var money = 200 # money! buy towers!
 # towers price
 # NOTE: I dont know where to put the price so it's here for now.
 var small_tower_price = 200
-var bomb_price = 500
+var bomb_price = 400
 
 
 func set_is_blocked(boolean):
