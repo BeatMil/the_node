@@ -88,7 +88,7 @@ func decrease_hp(amount : int):
 			auto_beat.add_money(1000)
 			print("boss money")
 		if stage_clear:
-			emit_signal("signal_clear")
 			queue_free()
+			emit_signal("signal_clear")
 		queue_free()
 	health_bar.value = hp

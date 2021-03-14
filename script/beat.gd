@@ -5,6 +5,7 @@ const SMALL_TOWER_PRE = preload("res://prefab/tower/small_tower.tscn")
 const BOMB_PRE = preload("res://prefab/special/bomb.tscn")
 # var current_grid_pos = Vector2.ZERO  # unuse variable?
 var can_spawn = true
+var last_enemy = false
 onready var auto_beat = get_node("/root/AutoBeat")
 onready  var spawn_timer = $spawn_timer
 
@@ -36,6 +37,8 @@ func _process(_delta): # debuging with label
 	$money_label.text = str(auto_beat.money)
 	$console.text = str(auto_beat.is_blocked)
 	$can_spawn.text = str(can_spawn)
+	if last_enemy:
+		beat_clear2()
 
 
 #copy and paste boi. this code just checks if the mouse is colliding with anything
@@ -74,9 +77,9 @@ func spawn_enemy():
 			"normal":
 				# normal enemy
 				enemy.name = "normal"
-				enemy.way = "../way1/"
+				enemy.way = "../way2/"
 				enemy.damage = 1
-				enemy.speed = 5
+				enemy.speed = 10
 			"boss":
 				# boss enemy
 				enemy.name = "boss"
@@ -156,15 +159,27 @@ func _input(event):
 		if event.button_index == BUTTON_LEFT and event.pressed and can_spawn:
 			spawn_bomb()
 
+	# turn off all mode with right click
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			auto_beat.toggle_off_button_except("")
+			auto_beat.turn_off_all_mode()
 
+# there was problems with checking if enemy are in stage
+# last enemy die it will keep checking for an enemy
+# if there are none left then stage will clear
 func beat_clear():
+	last_enemy = true
+
+func beat_clear2(): # I'm too lazy now sowwyy T^T
 	# check if there are enemies left
 	# it count itself before queuefree so I have to put array.size to 1
-	if get_all_enemy().size() <= 1:
+	if get_all_enemy().size() <= 0:
 		print("no enemy left clear!")
+		$stage_clear.set_visible(true)
+		last_enemy = false
 	else:
 		print("there is enemy! not clear!")
-
 
 
 func get_all_enemy():
