@@ -17,7 +17,13 @@ func spawn_mouse():
 
 
 func delete_mouse():
-	get_parent().get_node_or_null("mouse_grid").queue_free()
+	var buttons = get_parent().get_children()
+	# check every node in buttons
+	# find mouse
+	# mouse spawn together and name changes...
+	for button in buttons:
+		if button.name.find("mouse_grid") > -1:
+			button.queue_free()
 
 
 func _on_Button_toggled(button_pressed):
@@ -30,5 +36,5 @@ func _on_Button_toggled(button_pressed):
 		auto_beat.set_bomb_mode(true)
 		spawn_mouse()
 	else:
-		auto_beat.set_bomb_mode(false)
 		delete_mouse()
+		auto_beat.set_bomb_mode(false)

@@ -3,6 +3,7 @@ extends Node2D
 const ENEMY_PRE = preload("res://prefab/enemies/enemy.tscn")
 const SMALL_TOWER_PRE = preload("res://prefab/tower/small_tower.tscn")
 const BOMB_PRE = preload("res://prefab/special/bomb.tscn")
+const SECOND_STAGE = "res://scene/stage2.tscn"
 # var current_grid_pos = Vector2.ZERO  # unuse variable?
 var can_spawn = true
 var last_enemy = false
@@ -189,6 +190,7 @@ func beat_clear2(): # I'm too lazy now sowwyy T^T
 	if get_all_enemy().size() <= 0:
 		print("no enemy left clear!")
 		$stage_clear.set_visible(true)
+		print(get_tree().change_scene(SECOND_STAGE))
 		last_enemy = false
 	else:
 		print("there is enemy! not clear!")
