@@ -8,7 +8,8 @@ export var hp = 3
 export var type = "none"
 onready var health_bar = $"health_bar"
 onready var auto_beat = get_node("/root/AutoBeat")
-
+onready var heavy_beep = load("res://media/sfx/arcade_beep_heavy.ogg")
+onready var beep = load("res://media/sfx/arcade_beep.ogg")
 
 # signal emitted when this enemy queue freed
 signal signal_clear
@@ -20,6 +21,15 @@ var the_position = Vector2.ZERO
 var node_position = Vector2.ZERO
 
 func _ready():
+	# play spawn noise
+	match self.name:
+		"normal":
+			$AudioStreamPlayer.set_stream(beep)
+			$AudioStreamPlayer.play()
+		"boss":
+			$AudioStreamPlayer.set_stream(heavy_beep)
+			$AudioStreamPlayer.play()
+
 	var first_node = get_node(way + "1")
 	tween_move(first_node)
 	#godot switch case very cool
