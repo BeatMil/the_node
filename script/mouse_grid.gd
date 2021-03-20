@@ -3,8 +3,13 @@ extends Node2D
 var current_grid = Vector2.ZERO
 var green = Color(0.3, 0.8, 0.0)
 var red = Color(0.8, 0.1, 0.0)
+onready var auto_beat = get_node("/root/AutoBeat")
 
 func _ready():
+	if auto_beat.spawn_mode:
+		$range.set_visible(true)
+	else:
+		$range.set_visible(false)
 	set_color_green()
 
 func _input(event):
