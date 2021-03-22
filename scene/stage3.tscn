@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="stage3" type="Node2D"]
+__meta__ = {
+"_editor_description_": "this is where the spider pops up"
+}
