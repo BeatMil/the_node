@@ -1,5 +1,5 @@
 extends Node2D
-
+# beat comment linux
 const ENEMY_PRE = preload("res://prefab/enemies/enemy.tscn")
 const SMALL_TOWER_PRE = preload("res://prefab/tower/small_tower.tscn")
 const BOMB_PRE = preload("res://prefab/special/bomb.tscn")
