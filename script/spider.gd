@@ -8,11 +8,6 @@ func _ready():
 	pass
 
 
-func _on_Area2D_area_entered(area):
-	if area.is_in_group("attack"):
-		decrease_hp(1)
-
-
 func get_hp():
 	return hp
 
