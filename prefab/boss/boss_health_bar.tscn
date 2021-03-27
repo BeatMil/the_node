@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://script/boss_health_bar.gd" type="Script" id=1]
+[ext_resource path="res://media/sfx/careful02.wav" type="AudioStream" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.290196, 0.835294, 0.137255, 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "intro"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="boss_health_bar" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 64.0
+margin_right = 960.0
+margin_bottom = 24.0
+custom_styles/fg = SubResource( 1 )
+step = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ani_player" type="AnimationPlayer" parent="."]
+anims/intro = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

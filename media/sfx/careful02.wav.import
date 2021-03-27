@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/careful02.wav-dc9360ed780e536324dd76cb9a2e8758.sample"
+
+[deps]
+
+source_file="res://media/sfx/careful02.wav"
+dest_files=[ "res://.import/careful02.wav-dc9360ed780e536324dd76cb9a2e8758.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
