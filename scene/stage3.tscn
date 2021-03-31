@@ -72,4 +72,13 @@ anims/intro = SubResource( 2 )
 
 [node name="boss_health_bar" parent="." instance=ExtResource( 4 )]
 position = Vector2( -1.40588, 0.0888062 )
+
+[node name="attack1_pos" type="Position2D" parent="."]
+position = Vector2( 769, -112 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
 [connection signal="animation_finished" from="spider/ani_player" to="." method="_on_ani_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
