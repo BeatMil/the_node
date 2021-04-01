@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://prefab/boss/dialog.tscn" type="PackedScene" id=1]
+
+[node name="dialog" instance=ExtResource( 1 )]
+dialog = "You have no escape!!!"

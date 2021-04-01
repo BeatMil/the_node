@@ -3,10 +3,10 @@ extends Node2D
 # if not then I guess you can... google
 # sorry to be an asshole lol
 enum {
-		UP,
-		DOWN,
-		LEFT,
-		RIGT
+	UP,
+	DOWN,
+	LEFT,
+	RIGT
 }
 var speed = 8
 
@@ -28,3 +28,8 @@ func move():
 			current_pos, current_pos + Vector2(0, 800), 1,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
+
+
+func _on_Area2D_mouse_entered():
+	print("health decrease!")
+	pass # Replace with function body.
