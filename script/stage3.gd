@@ -5,7 +5,17 @@ extends Node2D
 const ATTACK2 = preload("res://prefab/boss/attack2.tscn")
 const MOUSE = preload("res://prefab/boss/boss_cursor.tscn")
 const DIALOG1 = preload("res://prefab/boss/dialog1.tscn")
+const HEALTH_BAR = preload("res://prefab/boss/boss_health_bar.tscn")
 var heart_mouse = load("res://prefab/boss/heart1.png")
+
+# config
+var order = [
+	["act1",3],
+	["act2",2],
+	["act3",1]
+]
+var count = 0
+
 
 # play intro animation
 func _ready():
@@ -16,7 +26,9 @@ func _ready():
 # intro animation
 func _on_ani_player_animation_finished(anim_name):
 	if anim_name == "intro":
-		$"boss_health_bar/ani_player".play("intro")
+		spawn_health_bar()
+		$order_timer.set_wait_time(order[0][1])
+		$order_timer.start()
 
 
 func _on_Timer_timeout():
@@ -42,3 +54,14 @@ func spawn_dialog(dialoog):
 	dialog.position = $dialog_pos.position
 	self.add_child(dialog)
 
+
+func spawn_health_bar():
+	var health_bar = HEALTH_BAR.instance()
+	health_bar.position = Vector2(0,24)
+	self.add_child(health_bar)
+
+
+# timer for each attacks
+func _on_order_timer_timeout():
+	print(order[count][0])
+	$order_timer.stop()
